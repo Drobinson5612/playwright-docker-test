@@ -10,13 +10,18 @@ RUN npm ci
 
 # Copy source and config
 COPY tsconfig.json ./
+COPY playwright.config.ts ./
 COPY src ./src
+COPY tests ./tests
 
 # Build TypeScript
 RUN npm run build
 
-# Remove dev dependencies to reduce image size
-RUN npm prune --production
+# Ensure playwright binary is accessible
+RUN npx playwright --version
+
+# Note: Keep all dependencies for testing
+# If running in production mode only, use: RUN npm prune --production
 
 # Create logs directory
 RUN mkdir -p /app/logs
@@ -24,5 +29,5 @@ RUN mkdir -p /app/logs
 # Set volume for logs
 VOLUME ["/app/logs"]
 
-# Run the application
+# Default command runs the scraper, but can be overridden to run tests
 CMD ["node", "dist/index.js"]
