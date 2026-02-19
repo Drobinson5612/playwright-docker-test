@@ -1,0 +1,15 @@
+# Architecture and design documents
+arch-design/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
