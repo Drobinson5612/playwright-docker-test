@@ -33,7 +33,20 @@ docker run -v $(pwd)/logs:/app/logs playwright-docker-test
 
 ### Using Docker Compose
 
+**Run the scraper:**
 ```bash
 docker-compose up
 ```
+
+**Run the tests:**
+```bash
+docker-compose run --rm playwright-tests
+```
+
+**View test results:**
+```bash
+npx playwright show-report
+```
+
+This opens an interactive HTML report at http://localhost:9323 with detailed test results, timing, and browser-specific information.
 
