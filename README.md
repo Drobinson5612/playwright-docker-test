@@ -48,5 +48,4 @@ docker-compose run --rm playwright-tests
 npx playwright show-report
 ```
 
-This opens an interactive HTML report at http://localhost:9323 with detailed test results, timing, and browser-specific information.
 
