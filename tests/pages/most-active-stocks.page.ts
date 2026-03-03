@@ -1,13 +1,13 @@
 import { Page, Locator } from '@playwright/test';
 
 /**
- * Page Object Model for Yahoo Finance IPO Calendar page
+ * Page Object Model for Yahoo Finance Most Active Stocks page
  * Centralizes all UI element selectors and page interactions
  */
-export class IpoCalendarPage {
+export class MostActiveStocksPage {
   readonly page: Page;
-  readonly url = 'https://finance.yahoo.com/calendar/ipo';
-  readonly ipoTable: Locator;
+  readonly url = 'https://finance.yahoo.com/markets/stocks/most-active/';
+  readonly stockTable: Locator;
   readonly tableHeaders: Locator;
   readonly tableRows: Locator;
   readonly tableCells: Locator;
@@ -16,14 +16,14 @@ export class IpoCalendarPage {
     this.page = page;
     
     // Initialize locators
-    this.ipoTable = page.locator('table');
+    this.stockTable = page.locator('table');
     this.tableHeaders = page.locator('table thead th');
     this.tableRows = page.locator('table tbody tr');
     this.tableCells = page.locator('table tbody tr td');
   }
   
   /**
-   * Navigate to the IPO Calendar page
+   * Navigate to the Most Active Stocks page
    */
   async navigate(): Promise<void> {
     await this.page.goto(this.url, { 
@@ -37,11 +37,11 @@ export class IpoCalendarPage {
    */
   async waitForPageLoad(): Promise<void> {
     await this.page.waitForTimeout(3000);
-    await this.ipoTable.waitFor({ state: 'visible', timeout: 10000 });
+    await this.stockTable.waitFor({ state: 'visible', timeout: 10000 });
   }
   
   /**
-   * Extract all table data from the IPO calendar
+   * Extract all table data from the most active stocks
    * @returns Array of row data, where each row is an array of cell values
    */
   async getTableData(): Promise<string[][]> {
@@ -54,7 +54,7 @@ export class IpoCalendarPage {
   }
   
   /**
-   * Get the number of IPO entries in the table
+   * Get the number of stock entries in the table
    * @returns Count of table rows
    */
   async getRowCount(): Promise<number> {

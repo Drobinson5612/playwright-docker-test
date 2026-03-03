@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 
 const TARGET_URL = 'https://finance.yahoo.com/calendar/ipo';
 
-test.describe('Yahoo Finance Tests', () => {
+test.describe('Latest IPOs Tests', () => {
   
-  test('Browser can connect and load YahooFinance-IPO page', async ({ page, browserName }) => {
+  test('Browser can connect and load latest IPO page', async ({ page, browserName }) => {
     await page.goto(TARGET_URL, { 
       waitUntil: 'domcontentloaded',
       timeout: 60000 
