@@ -6,16 +6,18 @@ Containerized TypeScript application that uses Playwright to interact with a tes
 This project demonstrates:
 - Running Playwright browsers in headless mode inside Docker
 - Testing across multiple browsers (Chromium, Firefox, WebKit)
+- API testing with comprehensive test coverage (75 tests)
 - Extracting data from test website
 - Outputting data to log files
 
 ## Prerequisites
 
-- Playwright
 - Docker 
 - Node.js 20+ 
 - npm or yarn
+- Playwright
 - Git (optional)
+- Prompt Helper API running on port 5000 (for API tests)
 
 ## Docker Usage
 
@@ -38,14 +40,23 @@ docker run -v $(pwd)/logs:/app/logs playwright-docker-test
 docker-compose up
 ```
 
-**Run the tests:**
+**Run tests (UI + API):**
 ```bash
 docker-compose run --rm playwright-tests
+```
+
+**Run tests (UI):**
+```bash
+docker-compose run --rm playwright-ui-tests
+```
+
+**Run tests (API-only):**
+```bash
+docker-compose run --rm playwright-api-tests
 ```
 
 **View test results:**
 ```bash
 npx playwright show-report
 ```
-
 
