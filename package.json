@@ -8,6 +8,10 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "test": "npx playwright test",
+    "test:ui": "npx playwright test --project=chromium-ui --project=firefox-ui --project=webkit-ui",
+    "test:api": "npx playwright test --project=api-tests",
+    "test:api:health": "npx playwright test tests/api/health.spec.ts --project=api-tests",
+    "test:all": "npx playwright test",
     "test:report": "npx playwright show-report"
   },
   "keywords": [
@@ -25,6 +29,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "playwright": "^1.41.0"
   }
 }

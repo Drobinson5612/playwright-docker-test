@@ -14,5 +14,28 @@ services:
     volumes:
       - ./playwright-report:/app/playwright-report
       - ./test-results:/app/test-results
+      - ./.env.test:/app/.env.test
+    environment:
+      - CI=true
+  
+  # API Tests - Run only API tests
+  playwright-api-tests:
+    build: .
+    command: /app/node_modules/@playwright/test/cli.js test --project=api-tests
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+      - ./.env.test:/app/.env.test
+    environment:
+      - CI=true
+      - PROMPT_HELPER_API_URL=http://host.docker.internal:5000
+  
+  # UI Tests - Run only UI tests
+  playwright-ui-tests:
+    build: .
+    command: /app/node_modules/@playwright/test/cli.js test --project=chromium-ui --project=firefox-ui --project=webkit-ui
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
     environment:
       - CI=true

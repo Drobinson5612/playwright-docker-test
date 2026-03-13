@@ -11,6 +11,7 @@ RUN npm ci
 # Copy source and config
 COPY tsconfig.json ./
 COPY playwright.config.ts ./
+COPY .env.test ./
 COPY src ./src
 COPY tests ./tests
 
