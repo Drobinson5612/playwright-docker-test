@@ -1,6 +1,6 @@
 # Playwright-Docker-Test
 
-Containerized TypeScript application that uses Playwright to interact with a test website. Using Yahoo! Finance's daily list of IPOs as a test website, this application navigates to the website, retrieves data, and performs basic validations. 
+Containerized TypeScript application that uses Playwright to interact with test websites. For UI automation - currently using Yahoo! Finance's daily list of IPOs as a test website, navigate to the website, retrieve data, and perform basic validations. For API automation - currently using [prompt-helper](https://github.com/Drobinson5612/prompt-helper) as a test website. Validates basic API tests against the back-end.
 
 ## Overview
 This project demonstrates:
